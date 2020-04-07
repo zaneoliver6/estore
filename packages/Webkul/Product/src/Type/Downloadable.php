@@ -56,11 +56,6 @@ class Downloadable extends AbstractType
     protected $isStockable = false;
 
     /**
-     * getProductOptions
-     */
-    protected $getProductOptions = [];
-
-    /**
      * Create a new product type instance.
      *
      * @param  \Webkul\Attribute\Repositories\AttributeRepository  $attributeRepository
@@ -257,16 +252,4 @@ class Downloadable extends AbstractType
 
         $item->save();
     }
-
-    /**
-     * get product options
-    */
-    // public function getProductOptions($product)
-    // {
-    //     $configurableOption = app('Webkul\Product\Helpers\DownloadableOption');
-    //     dd($configurableOption);
-    //     $options = $configurableOption->getDownloadableConfig($product);
-    //     dd($options);
-    //     return $options;
-    // }
 }
