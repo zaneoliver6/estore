@@ -62,7 +62,6 @@
                             </option>
                         </select>
                     </div>
-
                     <div v-if="option.type == 'radio'">
                         <span class="radio" v-if="! option.is_required">
                             <input type="radio" :name="'bundle_options[' + option.id + '][]'" v-model="selected_product" value="0" :id="'bundle_options[' + option.id + '][]'">

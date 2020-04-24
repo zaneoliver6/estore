@@ -75,16 +75,25 @@ class Shipping
      */
     public function saveAllShippingRates()
     {
+        $cart = Cart::getCart();
+
+        foreach($cart->items as $cartItems)
+        {
+            $type = $cartItems->type;
+        }
+
         if (! $cart = Cart::getCart()) {
             return;
         }
 
         $shippingAddress = $cart->shipping_address;
 
-        foreach ($this->rates as $rate) {
-            $rate->cart_address_id = $shippingAddress->id;
+        if($type != 'virtual') {
+            foreach ($this->rates as $rate) {
+                $rate->cart_address_id = $shippingAddress->id;
 
-            $rate->save();
+                $rate->save();
+            }
         }
     }
 

@@ -25,6 +25,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "intervention/image": "^2.4",
         "intervention/imagecache": "^2.3",
+        "jenssegers/agent": "^2.6",
         "kalnoy/nestedset": "5.0.0",
         "konekt/concord": "^1.2",
         "laravel/framework": "^6.0",
@@ -101,7 +102,8 @@
         "Webkul\\Rule\\": "packages/Webkul/Rule/src",
         "Webkul\\CMS\\": "packages/Webkul/CMS/src",
         "Webkul\\Velocity\\": "packages/Webkul/Velocity/src",
-        "Webkul\\BookingProduct\\": "packages/Webkul/BookingProduct/src"
+        "Webkul\\BookingProduct\\": "packages/Webkul/BookingProduct/src",
+        "Webkul\\PWA\\": "packages/Webkul/PWA/src"
       }
     },
 
