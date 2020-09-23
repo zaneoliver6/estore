@@ -1,0 +1,56 @@
+version: '3.5'
+
+services:
+  eshop-app:
+    build:
+      context: '.'
+      args:
+        uid: 1000
+    container_name: eshop-app
+    ports:
+      - 8000:80
+      - 9001:9001
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    volumes:
+      - .:/var/www/html
+    networks:
+      backend:
+        aliases:
+          - app
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --log-bin-trust-function-creators=1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./run/var:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=securerootpassword
+      - MYSQL_DATABASE=bagisto
+      - MYSQL_USER=neo
+      - MYSQL_PASSWORD=System123
+    networks:
+      backend:
+        aliases:
+          - mysql-db
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+    - 6379
+    environment:
+      - REDIS_URL=redis://cache
+      # rest of the environment definitions
+    networks:
+      backend:
+        aliases:
+          - redis-db
+
+networks:
+  backend:
+    name: backend-network
