@@ -73,9 +73,30 @@
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.street-addres.after') !!}
 
-            @include ('shop::customers.account.address.country-state', ['countryCode' => old('country') ?? $address->country, 'stateCode' => old('state') ?? $address->state])
+            <!-- @include ('shop::customers.account.address.country-state', ['countryCode' => old('country') ?? $address->country, 'stateCode' => old('state') ?? $address->state]) -->
 
-            {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.country-state.after') !!}
+            <!-- {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.country-state.after') !!} -->
+
+            <div class="control-group" :class="[errors.has('district') ? 'has-error' : '']">
+                    <label for="district" class="mandatory">
+                        {{ __('shop::app.customer.account.address.create.district') }}
+                    </label>
+                    <select type="text" v-validate="'required'" class="control styled-select" id="district" name="district" v-model="district" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.district') }}&quot;">
+                        <option value=""></option>
+                            <option {{ $address->district === "Belize" ? 'selected' : '' }}  value="Belize">Belize</option>
+                            <option {{ $address->district === "Orange Walk" ? 'selected' : '' }}  value="Orange Walk">Orange Walk</option>
+                            <option {{ $address->district === "Cayo" ? 'selected' : '' }}  value="Cayo">Cayo</option>
+                            <option {{ $address->district === "Corozal" ? 'selected' : '' }}   value="Corozal">Corozal</option>
+                            <option {{ $address->district === "Stan Creek" ? 'selected' : '' }} value="Stann Creek">Stan Creek</option>
+                            <option {{ $address->district === "Toledo" ? 'selected' : '' }} value="Toledo">Toledo</option>
+                    </select>
+                    <div class="select-icon-container">
+                        <span class="select-icon rango-arrow-down"></span>
+                    </div>
+                    <span class="control-error" v-if="errors.has('district')">
+                        @{{ errors.first('district') }}
+                    </span>
+                </div>
 
             <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                 <label for="city" class="mandatory">{{ __('shop::app.customer.account.address.create.city') }}</label>
@@ -85,13 +106,13 @@
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.create.after') !!}
 
-            <div class="control-group" :class="[errors.has('postcode') ? 'has-error' : '']">
+            <!-- <div class="control-group" :class="[errors.has('postcode') ? 'has-error' : '']">
                 <label for="postcode" class="mandatory">{{ __('shop::app.customer.account.address.create.postcode') }}</label>
                 <input type="text" class="control" name="postcode" value="{{ old('postcode') ?? $address->postcode }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.postcode') }}&quot;">
                 <span class="control-error" v-if="errors.has('postcode')">@{{ errors.first('postcode') }}</span>
-            </div>
+            </div> -->
 
-            {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.postcode.after') !!}
+            <!-- {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.postcode.after') !!} -->
 
             <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
                 <label for="phone" class="mandatory">{{ __('shop::app.customer.account.address.create.phone') }}</label>

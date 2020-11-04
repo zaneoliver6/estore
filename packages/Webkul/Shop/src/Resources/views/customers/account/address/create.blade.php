@@ -77,9 +77,9 @@
 
                     {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.street-address.after') !!}
 
-                    @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
+                    <!-- @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')]) -->
 
-                    {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.country-state.after') !!}
+                    <!-- {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.country-state.after') !!} -->
 
                     <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                         <label for="city" class="required">{{ __('shop::app.customer.account.address.create.city') }}</label>

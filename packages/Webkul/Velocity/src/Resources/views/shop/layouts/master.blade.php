@@ -141,6 +141,12 @@
             src="{{ asset('themes/velocity/assets/js/jquery.min.js') }}">
         </script>
 
+        <script 
+                async 
+                defer 
+                src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places" type="text/javascript">
+        </script>
+
         <script
             type="text/javascript"
             baseUrl="{{ url()->to('/') }}"
