@@ -128,8 +128,8 @@ RUN a2enconf servername
 RUN { \
       echo '<VirtualHost *:80>'; \
       echo '    ServerAdmin your_email@example.com'; \
-      echo '    DocumentRoot /var/www/html'; \
-      echo '    <Directory /var/www/html/>'; \
+      echo '    DocumentRoot /var/www/html/public'; \
+      echo '    <Directory /var/www/html/public>'; \
       echo '        Options Indexes FollowSymLinks MultiViews'; \
       echo '        AllowOverride All'; \
       echo '        Order deny,allow'; \
