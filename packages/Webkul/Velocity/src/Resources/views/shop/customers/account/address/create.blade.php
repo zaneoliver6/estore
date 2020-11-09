@@ -60,7 +60,9 @@
 
                 <div class="control-group" :class="[errors.has('address1[]') ? 'has-error' : '']">
                     <label for="address_0" class="mandatory">{{ __('shop::app.customer.account.address.create.street-address') }}</label>
-                    <input type="text" class="control" name="address1[]" id="address_0" value="{{ $addresses[0] ?: '' }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.street-address') }}&quot;">
+                    <input type="text" class="control map-input" name="address1[]" id="address_0" value="{{ $addresses[0] ?: '' }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.street-address') }}&quot;">
+                    <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                    <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
                     <span class="control-error" v-if="errors.has('address1[]')">@{{ errors.first('address1[]') }}</span>
                 </div>
 
@@ -74,9 +76,26 @@
 
                 {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.street-address.after') !!}
 
-                @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
-
-                {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.country-state.after') !!}
+                <div class="control-group" :class="[errors.has('district') ? 'has-error' : '']">
+                    <label for="district" class="mandatory">
+                        {{ __('shop::app.customer.account.address.create.district') }}
+                    </label>
+                    <select type="text" v-validate="'required'" class="control styled-select" id="district" name="district" v-model="district" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.district') }}&quot;">
+                        <option value=""></option>
+                            <option value="Belize">Belize</option>
+                            <option value="Orange Walk">Orange Walk</option>
+                            <option value="Cayo">Cayo</option>
+                            <option value="Corozal">Corozal</option>
+                            <option value="Stann Creek">Stan Creek</option>
+                            <option value="Toledo">Toledo</option>
+                    </select>
+                    <div class="select-icon-container">
+                        <span class="select-icon rango-arrow-down"></span>
+                    </div>
+                    <span class="control-error" v-if="errors.has('district')">
+                        @{{ errors.first('district') }}
+                    </span>
+                </div>
 
                 <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                     <label for="city" class="mandatory">{{ __('shop::app.customer.account.address.create.city') }}</label>
@@ -86,14 +105,6 @@
 
                 {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.city.after') !!}
 
-                <div class="control-group" :class="[errors.has('postcode') ? 'has-error' : '']">
-                    <label for="postcode" class="mandatory">{{ __('shop::app.customer.account.address.create.postcode') }}</label>
-                    <input type="text" class="control" name="postcode" value="{{ old('postcode') }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.postcode') }}&quot;">
-                    <span class="control-error" v-if="errors.has('postcode')">@{{ errors.first('postcode') }}</span>
-                </div>
-
-                {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.postcode.after') !!}
-
                 <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
                     <label for="phone" class="mandatory">{{ __('shop::app.customer.account.address.create.phone') }}</label>
                     <input type="text" class="control" name="phone" value="{{ old('phone') }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.phone') }}&quot;">
@@ -101,6 +112,12 @@
                 </div>
 
                 {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.after') !!}
+
+                <div class="control-group">
+                    <div id="address-map-container" style="width:100%;height:400px;border:solid 1px #cccccc;">
+                        <div style="width: 100%; height: 100%" id="address-map"></div>
+                    </div>
+                </div>
 
                 <div class="button-group">
                     <button class="theme-btn" type="submit">
@@ -112,3 +129,12 @@
 
     {!! view_render_event('bagisto.shop.customers.account.address.create.after') !!}
 @endsection
+@push('scripts')
+    @parent
+    <script src="{{ asset('themes/velocity/assets/js/mapInput.js') }}"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+            initialize()
+        }
+    </script>
+@endpush

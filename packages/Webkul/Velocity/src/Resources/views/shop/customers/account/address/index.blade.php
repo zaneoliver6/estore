@@ -45,8 +45,8 @@
                                         {{-- <li>{{ $address->company_name }}</li> --}}
                                         <li>{{ $address->address1 }},</li>
                                         <li>{{ $address->city }},</li>
-                                        <li>{{ $address->state }},</li>
-                                        <li>{{ core()->country_name($address->country) }} {{ $address->postcode }}</li>
+                                        <li>{{ $address->district }}</li>
+                                        <!-- <li>{{ core()->country_name($address->country) }} {{ $address->postcode }}</li> -->
                                         <li>
                                             {{ __('shop::app.customer.account.address.index.contact') }} : {{$address->phone }}
                                         </li>
