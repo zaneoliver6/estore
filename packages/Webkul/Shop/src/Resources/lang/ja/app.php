@@ -69,7 +69,8 @@ return [
         'page-title' => '検索',
         'found-results' => '検索結果',
         'found-result' => '検索結果',
-        'analysed-keywords' => 'Analysed Keywords'
+        'analysed-keywords' => 'Analysed Keywords',
+        'image-search-option' => 'Image Search Option'
     ],
 
     'reviews' => [
@@ -406,6 +407,7 @@ return [
         'available-for-order' => '注文可能',
         'settings' => 'Settings',
         'compare_options' => 'Compare Options',
+        'wishlist-options' => 'Wishlist Options'
     ],
 
     'buynow' => [

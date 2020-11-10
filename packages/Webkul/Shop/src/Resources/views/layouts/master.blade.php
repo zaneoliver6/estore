@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
+    <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
     <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
         <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
@@ -39,7 +39,7 @@
 </head>
 
 
-<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+<body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
 
     {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
@@ -56,7 +56,7 @@
 
             @yield('slider')
 
-            <div class="content-container">
+            <main class="content-container">
 
                 {!! view_render_event('bagisto.shop.layout.content.before') !!}
 
@@ -64,7 +64,7 @@
 
                 {!! view_render_event('bagisto.shop.layout.content.after') !!}
 
-            </div>
+            </main>
 
         </div>
 
@@ -103,7 +103,7 @@
         @endif
 
         window.serverErrors = [];
-        
+
         @if (isset($errors))
             @if (count($errors))
                 window.serverErrors = @json($errors->getMessages());

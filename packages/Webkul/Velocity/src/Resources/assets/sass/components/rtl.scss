@@ -2,6 +2,15 @@ body {
     &.rtl {
         text-align: right;
 
+        .fs16 {
+            font-size: 14px !important;
+        }
+
+        .order-summary-container {
+            margin-left: 0px;
+            margin-right: 130px;
+        }
+
         .velocity-divide-page {
             .right {
                 padding-left: 0 !important;
@@ -154,6 +163,11 @@ body {
             }
         }
 
+        .sticker {
+            left: unset;
+            right: 8px;
+        }
+
         .subscriber-form-div {
             text-align: left;
         }
@@ -193,6 +207,14 @@ body {
                     right: 20px;
                 }
             }
+
+            #account {
+                + .account-modal {
+                    .modal-content {
+                        float: left;
+                    }
+                }
+            }
         }
 
         #cart-modal-content {
@@ -218,6 +240,14 @@ body {
             li {
                 a {
                     padding: 7px 15px 5px 15px;
+                }
+
+                ul.nested {
+                    li {
+                        a {
+                            padding-right: 25px;
+                        }
+                    }
                 }
             }
         }
@@ -338,7 +368,7 @@ body {
 
         .compare-products {
             .wishlist-icon {
-                left: 60px;
+                left: 52px;
                 right: unset;
             }
 
@@ -446,6 +476,7 @@ body {
         }
         .pr0 {
             padding-left: 0 !important;
+            padding-right: 15px !important;
         }
         .pl0 {
             padding-right: 0px !important;
@@ -483,41 +514,16 @@ body {
 }
 
 @media only screen and (max-width: 1192px) {
-    body {
-        &.rtl {
 
-            #search-form {
-
-                #header-search-icon {
-                    float: right;
-                    border-radius: 2px 0px 0px 2px;
-                }
-
-                .btn-group {
-                    .selectdiv {
-                        width: 190px;
-                    }
-                }
-
-                .selectdiv {
-                    + div {
-                        input {
-                            width: 220px;
-                        }
-                    }
-                }
-            }
-
-            .image-search-container {
-                left: 70px;
-            }
-        }
-    }
 }
 
 @media only screen and (max-width: 992px) {
     body {
         &.rtl {
+            .order-summary-container {
+                margin-right: 0px;
+            }
+
             .nav-container {
                 ul {
                     li {
@@ -566,6 +572,42 @@ body {
                     width: 150px;
                     top: 4px;
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    body {
+        &.rtl {
+            .fs16 {
+                font-size: 12px !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    body {
+        &.rtl {
+            .fs16 {
+                font-size: 10px !important;
+            }
+
+            .velocity-divide-page {
+                .right {
+                    padding: 0 20px !important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    body {
+        &.rtl {
+            .fs16 {
+                font-size: 8px !important;
             }
         }
     }

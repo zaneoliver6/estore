@@ -19,9 +19,8 @@
 
         <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/velocity.css') }}" />
         <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/google-font.css') }}" />
 
-        @if (core()->getCurrentLocale()->direction == 'rtl')
+        @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction == 'rtl')
             <link href="{{ asset('themes/velocity/assets/css/bootstrap-flipped.css') }}" rel="stylesheet">
         @endif
 
@@ -46,14 +45,12 @@
         </style>
     </head>
 
-    <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
+    <body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
         {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
         @include('shop::UI.particals')
 
         <div id="app">
-            {{-- <responsive-sidebar v-html="responsiveSidebarTemplate"></responsive-sidebar> --}}
-
             <product-quick-view v-if="$root.quickView"></product-quick-view>
 
             <div class="main-container-wrapper">
@@ -141,9 +138,9 @@
             src="{{ asset('themes/velocity/assets/js/jquery.min.js') }}">
         </script>
 
-        <script 
-                async 
-                defer 
+        <script
+                async
+                defer
                 src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places" type="text/javascript">
         </script>
 
@@ -155,12 +152,12 @@
 
         <script
             type="text/javascript"
-            src="{{ asset('themes/velocity/assets/js/jquery.ez-plus.js') }}">
+            src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
         </script>
 
         <script
             type="text/javascript"
-            src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
+            src="{{ asset('themes/velocity/assets/js/jquery.ez-plus.js') }}">
         </script>
 
         <script type="text/javascript">

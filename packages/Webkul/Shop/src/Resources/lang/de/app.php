@@ -72,7 +72,8 @@ return [
         'page-title' => config('app.name') . ' - Suchen',
         'found-results' => 'Suchergebnisse gefunden',
         'found-result' => 'Suchergebnis gefunden',
-        'analysed-keywords' => 'Analysed Keywords'
+        'analysed-keywords' => 'Analysed Keywords',
+        'image-search-option' => 'Image Search Option'
     ],
 
     'reviews' => [
@@ -437,6 +438,7 @@ return [
         'available' => 'Verfügbar',
         'settings' => 'Settings',
         'compare_options' => 'Compare Options',
+        'wishlist-options' => 'Wishlist Options'
     ],
 
     // 'reviews' => [

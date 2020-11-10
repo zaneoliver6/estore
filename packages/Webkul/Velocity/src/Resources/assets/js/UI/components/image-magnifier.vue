@@ -1,11 +1,12 @@
 <template>
-    <div class="magnifier col-12 text-center no-padding">
+    <div class="magnifier">
         <img
             :src="src"
             :data-zoom-image="src"
             ref="activeProductImage"
             id="active-product-image"
             class="main-product-image"
+            alt=""
         />
     </div>
 </template>

@@ -938,6 +938,7 @@ return [
             'gender' => 'Gender',
             'email' => 'Email',
             'date_of_birth' => 'Date of Birth',
+            'date_of_birth_placeholder' => 'yyyy-mm-dd',
             'phone' => 'Phone',
             'customer_group' => 'Customer Group',
             'save-btn-title' => 'Save Customer',
@@ -1289,7 +1290,7 @@ return [
             'payment-methods' => 'Payment Methods',
             'cash-on-delivery' => 'Cash On Delivery',
             'money-transfer' => 'Money Transfer',
-            'paypal-standard' => 'Paypal Standard',
+            'paypal-standard' => 'PayPal Standard',
             'business-account' => 'Business Account',
             'newsletter' => 'NewsLetter Subscription',
             'newsletter-subscription' => 'Allow NewsLetter Subscription',
@@ -1363,7 +1364,7 @@ return [
             'custom-scripts' => 'Custom Scripts',
             'custom-css' => 'Custom CSS',
             'custom-javascript' => 'Custom Javascript',
-            'paypal-smart-button' => 'Paypal Smart Button',
+            'paypal-smart-button' => 'PayPal',
             'client-id' => 'Client Id',
             'client-id-info' => 'Use "sb" for testing.'
        ]
